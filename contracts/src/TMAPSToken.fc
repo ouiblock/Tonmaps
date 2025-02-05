@@ -1,0 +1,144 @@
+#include "stdlib.fc";
+
+;; TMAPS Token Contract
+
+;; Storage Variables
+global int total_supply;
+global int decimals;
+global cell owner_address;
+global cell balances;
+global cell allowances;
+
+;; Constants
+const int MIN_TONS_FOR_STORAGE = 10000000; ;; 0.01 TON
+const int GAS_CONSUMPTION = 10000000;      ;; 0.01 TON
+
+;; Error Codes
+const int error::insufficient_balance = 101;
+const int error::insufficient_allowance = 102;
+const int error::unauthorized = 103;
+
+() load_data() impure {
+    var ds = get_data().begin_parse();
+    total_supply = ds~load_uint(256);
+    decimals = ds~load_uint(8);
+    owner_address = ds~load_ref();
+    balances = ds~load_ref();
+    allowances = ds~load_ref();
+    ds.end_parse();
+}
+
+() save_data() impure {
+    set_data(begin_cell()
+        .store_uint(total_supply, 256)
+        .store_uint(decimals, 8)
+        .store_ref(owner_address)
+        .store_ref(balances)
+        .store_ref(allowances)
+        .end_cell());
+}
+
+;; Get methods
+
+int get_balance(slice address) method_id {
+    load_data();
+    (int balance, _) = balances.udict_get?(256, address);
+    return balance;
+}
+
+int get_allowance(slice owner, slice spender) method_id {
+    load_data();
+    cell owner_allowances = allowances.udict_get_ref(256, owner);
+    if (owner_allowances.null?()) {
+        return 0;
+    }
+    (int amount, _) = owner_allowances.udict_get?(256, spender);
+    return amount;
+}
+
+;; Messages
+
+() mint(slice to, int amount) impure {
+    load_data();
+    throw_unless(error::unauthorized, equal_slices(sender_address(), owner_address.begin_parse()));
+    
+    (int balance, _) = balances.udict_get?(256, to);
+    balances~udict_set(256, to, balance + amount);
+    total_supply += amount;
+    save_data();
+}
+
+() burn(int amount) impure {
+    load_data();
+    slice sender = sender_address();
+    (int balance, _) = balances.udict_get?(256, sender);
+    throw_unless(error::insufficient_balance, balance >= amount);
+    
+    balances~udict_set(256, sender, balance - amount);
+    total_supply -= amount;
+    save_data();
+}
+
+() transfer(slice to, int amount) impure {
+    load_data();
+    slice sender = sender_address();
+    (int from_balance, _) = balances.udict_get?(256, sender);
+    throw_unless(error::insufficient_balance, from_balance >= amount);
+    
+    (int to_balance, _) = balances.udict_get?(256, to);
+    balances~udict_set(256, sender, from_balance - amount);
+    balances~udict_set(256, to, to_balance + amount);
+    save_data();
+}
+
+() approve(slice spender, int amount) impure {
+    load_data();
+    slice owner = sender_address();
+    cell owner_allowances = allowances.udict_get_ref(256, owner);
+    if (owner_allowances.null?()) {
+        owner_allowances = new_dict();
+    }
+    owner_allowances~udict_set(256, spender, amount);
+    allowances~udict_set_ref(256, owner, owner_allowances);
+    save_data();
+}
+
+() transfer_from(slice from, slice to, int amount) impure {
+    load_data();
+    slice spender = sender_address();
+    
+    cell from_allowances = allowances.udict_get_ref(256, from);
+    throw_unless(error::unauthorized, ~ from_allowances.null?());
+    (int allowed, _) = from_allowances.udict_get?(256, spender);
+    throw_unless(error::insufficient_allowance, allowed >= amount);
+    
+    (int from_balance, _) = balances.udict_get?(256, from);
+    throw_unless(error::insufficient_balance, from_balance >= amount);
+    
+    (int to_balance, _) = balances.udict_get?(256, to);
+    
+    from_allowances~udict_set(256, spender, allowed - amount);
+    allowances~udict_set_ref(256, from, from_allowances);
+    
+    balances~udict_set(256, from, from_balance - amount);
+    balances~udict_set(256, to, to_balance + amount);
+    
+    save_data();
+}
+
+;; Getters
+
+int get_total_supply() method_id {
+    load_data();
+    return total_supply;
+}
+
+int get_decimals() method_id {
+    load_data();
+    return decimals;
+}
+
+slice get_owner() method_id {
+    load_data();
+    return owner_address.begin_parse();
+}
