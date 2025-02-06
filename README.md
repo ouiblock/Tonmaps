@@ -2,9 +2,16 @@
 
 ## Status
 [![CI](https://github.com/ouiblock/Tonmaps/actions/workflows/ci.yml/badge.svg)](https://github.com/ouiblock/Tonmaps/actions/workflows/ci.yml)
+[![Performance](https://github.com/ouiblock/Tonmaps/actions/workflows/performance.yml/badge.svg)](https://github.com/ouiblock/Tonmaps/actions/workflows/performance.yml)
+[![Uptime](https://img.shields.io/uptimerobot/ratio/7/m793642934-ec67b4d9cbe943f94b3c34d9)](https://stats.uptimerobot.com/dashboard)
+[![Response Time](https://img.shields.io/uptimerobot/status/m793642934-ec67b4d9cbe943f94b3c34d9)](https://stats.uptimerobot.com/dashboard)
+
+## Quality & Security
 [![Codecov](https://codecov.io/gh/ouiblock/Tonmaps/branch/main/graph/badge.svg)](https://codecov.io/gh/ouiblock/Tonmaps)
 [![Maintainability](https://api.codeclimate.com/v1/badges/your-repo-id/maintainability)](https://codeclimate.com/github/ouiblock/Tonmaps)
 [![Test Coverage](https://api.codeclimate.com/v1/badges/your-repo-id/test_coverage)](https://codeclimate.com/github/ouiblock/Tonmaps)
+[![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=ouiblock_Tonmaps&metric=security_rating)](https://sonarcloud.io/summary/new_code?id=ouiblock_Tonmaps)
+[![Known Vulnerabilities](https://snyk.io/test/github/ouiblock/Tonmaps/badge.svg)](https://snyk.io/test/github/ouiblock/Tonmaps)
 
 ## Project Info
 [![GitHub license](https://img.shields.io/github/license/ouiblock/Tonmaps)](https://github.com/ouiblock/Tonmaps/blob/main/LICENSE)
