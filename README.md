@@ -4,8 +4,10 @@
 [![GitHub license](https://img.shields.io/github/license/ouiblock/Tonmaps)](https://github.com/ouiblock/Tonmaps/blob/main/LICENSE)
 [![GitHub issues](https://img.shields.io/github/issues/ouiblock/Tonmaps)](https://github.com/ouiblock/Tonmaps/issues)
 [![GitHub stars](https://img.shields.io/github/stars/ouiblock/Tonmaps)](https://github.com/ouiblock/Tonmaps/stargazers)
-[![Maintainability](https://api.codeclimate.com/v1/badges/your-repo-id/maintainability)](https://codeclimate.com/github/ouiblock/Tonmaps)
-[![Documentation](https://img.shields.io/badge/docs-GitHub%20Pages-blue)](https://ouiblock.github.io/Tonmaps/)
+[![GitHub forks](https://img.shields.io/github/forks/ouiblock/Tonmaps)](https://github.com/ouiblock/Tonmaps/network)
+[![GitHub pull requests](https://img.shields.io/github/issues-pr/ouiblock/Tonmaps)](https://github.com/ouiblock/Tonmaps/pulls)
+[![Last Commit](https://img.shields.io/github/last-commit/ouiblock/Tonmaps)](https://github.com/ouiblock/Tonmaps/commits/main)
+[![Documentation](https://img.shields.io/badge/docs-GitHub%20Pages-blue)](https://ouiblock.github.io/tonmaps/)
 
 A decentralized ride-sharing and delivery application built on TON Blockchain.
 
