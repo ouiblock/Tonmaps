@@ -117,3 +117,17 @@ Enhancement suggestions are tracked as GitHub issues. When creating an enhanceme
 ## Recognition
 
 Contributors who make significant and valuable contributions will be granted commit access to the project.
+
+## Getting Help
+
+If you need help with your contribution, you can:
+
+1. Join our [Telegram group](https://t.me/Oxmasteronchain)
+2. Create an issue in the [GitHub repository](https://github.com/ouiblock/tonmaps)
+3. Contact the maintainer directly: [@Oxmasteronchain](https://t.me/Oxmasteronchain)
+
+## Project Maintainers
+
+- Oxmasteronchain ([@Oxmasteronchain](https://t.me/Oxmasteronchain))
+  - GitHub: [Oxmasteronchain](https://github.com/Oxmasteronchain)
+  - Role: Lead Developer & Project Maintainer

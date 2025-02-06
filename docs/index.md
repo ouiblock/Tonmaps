@@ -55,3 +55,20 @@ const route = await TonMaps.calculateRoute(origin, destination);
 ## Contributing
 
 We welcome contributions! Please see our [Contributing Guide](CONTRIBUTING.md) for details.
+
+## Community & Support
+
+### Official Links
+- GitHub Repository: [ouiblock/tonmaps](https://github.com/ouiblock/tonmaps)
+- Documentation: [TonMaps Docs](https://ouiblock.github.io/tonmaps/)
+- Personal GitHub: [Oxmasteronchain](https://github.com/Oxmasteronchain)
+
+### Get in Touch
+- Telegram: [@Oxmasteronchain](https://t.me/Oxmasteronchain)
+- GitHub Issues: [Report a Bug](https://github.com/ouiblock/tonmaps/issues)
+- GitHub Discussions: [Join the Discussion](https://github.com/ouiblock/tonmaps/discussions)
+
+### For Developers
+- API Documentation
+- Developer Guide
+- Smart Contract Documentation

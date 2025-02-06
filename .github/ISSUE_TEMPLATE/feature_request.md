@@ -26,3 +26,13 @@ How would this feature benefit users of TonMaps?
 
 **Additional context**
 Add any other context or screenshots about the feature request here.
+
+---
+Need help? Contact us:
+- Telegram: [@Oxmasteronchain](https://t.me/Oxmasteronchain)
+- GitHub Issues: [ouiblock/tonmaps](https://github.com/ouiblock/tonmaps/issues)
+- Project Documentation: [TonMaps Docs](https://ouiblock.github.io/tonmaps/)
+
+Join our community to discuss feature ideas:
+- Telegram Group: [@Oxmasteronchain](https://t.me/Oxmasteronchain)
+- GitHub Discussions: [TonMaps Discussions](https://github.com/ouiblock/tonmaps/discussions)

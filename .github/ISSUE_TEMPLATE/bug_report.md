@@ -32,3 +32,9 @@ If applicable, add screenshots to help explain your problem.
 
 **Additional context**
 Add any other context about the problem here.
+
+---
+Need help? Contact us:
+- Telegram: [@Oxmasteronchain](https://t.me/Oxmasteronchain)
+- GitHub Issues: [ouiblock/tonmaps](https://github.com/ouiblock/tonmaps/issues)
+- Project Documentation: [TonMaps Docs](https://ouiblock.github.io/tonmaps/)
