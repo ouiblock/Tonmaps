@@ -1,13 +1,28 @@
 # TonMaps
 
+## Status
 [![CI](https://github.com/ouiblock/Tonmaps/actions/workflows/ci.yml/badge.svg)](https://github.com/ouiblock/Tonmaps/actions/workflows/ci.yml)
+[![Codecov](https://codecov.io/gh/ouiblock/Tonmaps/branch/main/graph/badge.svg)](https://codecov.io/gh/ouiblock/Tonmaps)
+[![Maintainability](https://api.codeclimate.com/v1/badges/your-repo-id/maintainability)](https://codeclimate.com/github/ouiblock/Tonmaps)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/your-repo-id/test_coverage)](https://codeclimate.com/github/ouiblock/Tonmaps)
+
+## Project Info
 [![GitHub license](https://img.shields.io/github/license/ouiblock/Tonmaps)](https://github.com/ouiblock/Tonmaps/blob/main/LICENSE)
 [![GitHub issues](https://img.shields.io/github/issues/ouiblock/Tonmaps)](https://github.com/ouiblock/Tonmaps/issues)
 [![GitHub stars](https://img.shields.io/github/stars/ouiblock/Tonmaps)](https://github.com/ouiblock/Tonmaps/stargazers)
 [![GitHub forks](https://img.shields.io/github/forks/ouiblock/Tonmaps)](https://github.com/ouiblock/Tonmaps/network)
 [![GitHub pull requests](https://img.shields.io/github/issues-pr/ouiblock/Tonmaps)](https://github.com/ouiblock/Tonmaps/pulls)
 [![Last Commit](https://img.shields.io/github/last-commit/ouiblock/Tonmaps)](https://github.com/ouiblock/Tonmaps/commits/main)
+
+## Dependencies
+[![Frontend Dependencies](https://img.shields.io/librariesio/github/ouiblock/Tonmaps?path=frontend)](https://libraries.io/github/ouiblock/Tonmaps)
+[![Backend Dependencies](https://img.shields.io/librariesio/github/ouiblock/Tonmaps?path=backend)](https://libraries.io/github/ouiblock/Tonmaps)
+[![Known Vulnerabilities](https://snyk.io/test/github/ouiblock/Tonmaps/badge.svg)](https://snyk.io/test/github/ouiblock/Tonmaps)
+
+## Documentation & Community
 [![Documentation](https://img.shields.io/badge/docs-GitHub%20Pages-blue)](https://ouiblock.github.io/tonmaps/)
+[![TON](https://img.shields.io/badge/TON-Blockchain-blue)](https://ton.org)
+[![Telegram](https://img.shields.io/badge/Telegram-blue?logo=telegram)](https://t.me/Oxmasteronchain)
 
 A decentralized ride-sharing and delivery application built on TON Blockchain.
 

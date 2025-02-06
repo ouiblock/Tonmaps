@@ -14,6 +14,9 @@ updates:
       prefix: "deps"
     target-branch: "main"
     versioning-strategy: "auto"
+    allow:
+      - dependency-type: "production"
+    security-updates-only: true
 
   # Backend dependencies
   - package-ecosystem: "pip"
@@ -27,6 +30,9 @@ updates:
       - "python"
     commit-message:
       prefix: "deps"
+    allow:
+      - dependency-type: "production"
+    security-updates-only: true
 
   # GitHub Actions
   - package-ecosystem: "github-actions"
@@ -39,3 +45,4 @@ updates:
       - "github-actions"
     commit-message:
       prefix: "ci"
+    security-updates-only: true

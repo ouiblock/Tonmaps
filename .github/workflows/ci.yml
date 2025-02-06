@@ -7,60 +7,80 @@ on:
     branches: [ main ]
 
 jobs:
-  test:
+  frontend-test:
     runs-on: ubuntu-latest
-
-    strategy:
-      matrix:
-        node-version: [16.x, 18.x]
-
+    
     steps:
     - uses: actions/checkout@v3
-    
-    - name: Use Node.js ${{ matrix.node-version }}
+    - name: Setup Node.js
       uses: actions/setup-node@v3
       with:
-        node-version: ${{ matrix.node-version }}
+        node-version: '18.x'
         cache: 'npm'
-        cache-dependency-path: './frontend/package-lock.json'
+        cache-dependency-path: frontend/package-lock.json
+        
+    - name: Install Dependencies
+      run: cd frontend && npm ci
+      
+    - name: Run Tests with Coverage
+      run: cd frontend && npm run test:coverage
+      
+    - name: Upload coverage to Codecov
+      uses: codecov/codecov-action@v3
+      with:
+        directory: ./frontend/coverage
+        flags: frontend
+        
+    - name: Upload coverage to Code Climate
+      uses: paambaati/codeclimate-action@v5.0.0
+      env:
+        CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
+      with:
+        coverageLocations: |
+          ${{github.workspace}}/frontend/coverage/lcov.info:lcov
 
-    - name: Install dependencies
-      working-directory: ./frontend
-      run: npm ci
-
-    - name: Run linter
-      working-directory: ./frontend
-      run: npm run lint || true
-
-    - name: Run tests
-      working-directory: ./frontend
-      run: npm test || true
-
-    - name: Build
-      working-directory: ./frontend
-      run: npm run build
-
-  python-test:
+  backend-test:
     runs-on: ubuntu-latest
     
-    strategy:
-      matrix:
-        python-version: [3.9, 3.11]
-
     steps:
     - uses: actions/checkout@v3
-    
-    - name: Set up Python ${{ matrix.python-version }}
+    - name: Set up Python
       uses: actions/setup-python@v4
       with:
-        python-version: ${{ matrix.python-version }}
+        python-version: '3.11'
+        cache: 'pip'
         
-    - name: Install dependencies
-      working-directory: ./backend
+    - name: Install Dependencies
       run: |
+        cd backend
         python -m pip install --upgrade pip
         pip install -r requirements.txt
+        pip install pytest pytest-cov
         
-    - name: Run tests
-      working-directory: ./backend
-      run: python -m pytest || true
+    - name: Run Tests with Coverage
+      run: |
+        cd backend
+        pytest --cov=./ --cov-report=xml
+        
+    - name: Upload coverage to Codecov
+      uses: codecov/codecov-action@v3
+      with:
+        directory: ./backend
+        flags: backend
+        
+    - name: Upload coverage to Code Climate
+      uses: paambaati/codeclimate-action@v5.0.0
+      env:
+        CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
+      with:
+        coverageLocations: |
+          ${{github.workspace}}/backend/coverage.xml:coverage.py
+
+  dependency-review:
+    runs-on: ubuntu-latest
+    if: github.event_name == 'pull_request'
+    
+    steps:
+    - uses: actions/checkout@v3
+    - name: 'Dependency Review'
+      uses: actions/dependency-review-action@v3
