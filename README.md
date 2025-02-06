@@ -218,9 +218,11 @@ Distributed under the MIT License. See `LICENSE` for more information.
 
 ## Contact
 
-Your Name - [@your_telegram](https://t.me/your_telegram)
+Oxmasteronchain - [@Oxmasteronchain](https://t.me/Oxmasteronchain)
 
-Project Link: [https://github.com/yourusername/tonmaps](https://github.com/yourusername/tonmaps)
+Project Links:
+- GitHub: [https://github.com/ouiblock/tonmaps](https://github.com/ouiblock/tonmaps)
+- Personal GitHub: [https://github.com/Oxmasteronchain](https://github.com/Oxmasteronchain)
 
 ## Acknowledgments
 
