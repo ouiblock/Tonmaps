@@ -32,7 +32,7 @@ jobs:
         config-name: release-drafter.yml
         
     - name: Create GitHub Release
-      uses: softprops/action-gh-release@v1
+      uses: softprops/action-gh-release@v2
       if: startsWith(github.ref, 'refs/tags/')
       with:
         body: ${{ steps.release.outputs.body }}
