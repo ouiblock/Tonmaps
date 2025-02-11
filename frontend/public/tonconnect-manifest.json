@@ -1,0 +1,16 @@
+{
+  "url": "https://onzroad.com",
+  "name": "Onzroad",
+  "iconUrl": "https://onzroad.com/logo.png",
+  "termsOfUseUrl": "https://onzroad.com/terms",
+  "privacyPolicyUrl": "https://onzroad.com/privacy",
+  "manifestVersion": "0.1",
+  "items": [
+    {
+      "name": "Onzroad Web App",
+      "url": "https://onzroad.com",
+      "iconUrl": "https://onzroad.com/logo.png",
+      "platforms": ["web"]
+    }
+  ]
+}

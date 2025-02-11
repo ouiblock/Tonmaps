@@ -1,0 +1,19 @@
+remote_theme: pages-themes/cayman@v0.2.0
+plugins:
+- jekyll-remote-theme
+
+title: Onzroad Documentation
+description: Documentation for the Onzroad decentralized ride-sharing and delivery platform on TON Blockchain
+show_downloads: true
+google_analytics: # Add your Google Analytics tracking ID here
+
+# Navigation
+nav:
+  - Home: /
+  - Docs: /docs
+  - API: /api
+  - GitHub: https://github.com/ouiblock/onzroad
+
+social_links:
+  - GitHub: https://github.com/ouiblock/onzroad
+  - Telegram: https://t.me/Oxmasteronchain

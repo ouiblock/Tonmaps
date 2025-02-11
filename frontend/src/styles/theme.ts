@@ -1,0 +1,153 @@
+export const theme = {
+  colors: {
+    primary: {
+      DEFAULT: '#007AFF',
+      light: '#3395FF',
+      dark: '#0056B3',
+      hover: '#0069E6',
+      bg: 'rgba(0, 122, 255, 0.1)',
+    },
+    secondary: {
+      DEFAULT: '#38D39F',
+      light: '#5FDDB5',
+      dark: '#2BA77C',
+      hover: '#32C092',
+      bg: 'rgba(56, 211, 159, 0.1)',
+    },
+    accent: {
+      DEFAULT: '#FF8C42',
+      light: '#FFA66B',
+      dark: '#E67324',
+      hover: '#FF7D29',
+      bg: 'rgba(255, 140, 66, 0.1)',
+    },
+    light: {
+      bg: {
+        primary: '#F5F5F5',
+        secondary: '#FFFFFF',
+        tertiary: '#E8E8E8',
+      },
+      text: {
+        primary: '#1E1E1E',
+        secondary: '#4A4A4A',
+        tertiary: '#717171',
+      },
+      border: '#E0E0E0',
+    },
+    dark: {
+      bg: {
+        primary: '#1E1E1E',
+        secondary: '#2D2D2D',
+        tertiary: '#3D3D3D',
+      },
+      text: {
+        primary: '#FFFFFF',
+        secondary: '#B3B3B3',
+        tertiary: '#808080',
+      },
+      border: '#404040',
+    },
+    success: {
+      DEFAULT: '#38D39F',
+      light: '#5FDDB5',
+      dark: '#2BA77C',
+    },
+    warning: {
+      DEFAULT: '#FFB547',
+      light: '#FFC571',
+      dark: '#E69A2E',
+    },
+    error: {
+      DEFAULT: '#FF5C5C',
+      light: '#FF8080',
+      dark: '#E63939',
+    },
+    info: {
+      DEFAULT: '#007AFF',
+      light: '#3395FF',
+      dark: '#0056B3',
+    },
+  },
+  typography: {
+    fontFamily: {
+      primary: 'Inter, system-ui, sans-serif',
+      accent: 'Montserrat, system-ui, sans-serif',
+    },
+    fontSize: {
+      xs: '0.75rem',
+      sm: '0.875rem',
+      base: '1rem',
+      lg: '1.125rem',
+      xl: '1.25rem',
+      '2xl': '1.5rem',
+      '3xl': '1.875rem',
+      '4xl': '2.25rem',
+      '5xl': '3rem',
+    },
+    fontWeight: {
+      normal: '400',
+      medium: '500',
+      semibold: '600',
+      bold: '700',
+    },
+    lineHeight: {
+      none: '1',
+      tight: '1.25',
+      snug: '1.375',
+      normal: '1.5',
+      relaxed: '1.625',
+      loose: '2',
+    },
+  },
+  spacing: {
+    0: '0',
+    1: '0.25rem',
+    2: '0.5rem',
+    3: '0.75rem',
+    4: '1rem',
+    5: '1.25rem',
+    6: '1.5rem',
+    8: '2rem',
+    10: '2.5rem',
+    12: '3rem',
+    16: '4rem',
+    20: '5rem',
+    24: '6rem',
+    32: '8rem',
+  },
+  borderRadius: {
+    none: '0',
+    sm: '0.125rem',
+    DEFAULT: '0.25rem',
+    md: '0.375rem',
+    lg: '0.5rem',
+    xl: '0.75rem',
+    '2xl': '1rem',
+    '3xl': '1.5rem',
+    full: '9999px',
+  },
+  shadows: {
+    sm: '0 1px 2px 0 rgba(0, 0, 0, 0.05)',
+    DEFAULT: '0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06)',
+    md: '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)',
+    lg: '0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)',
+    xl: '0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)',
+  },
+  transitions: {
+    DEFAULT: '150ms cubic-bezier(0.4, 0, 0.2, 1)',
+    fast: '100ms cubic-bezier(0.4, 0, 0.2, 1)',
+    slow: '300ms cubic-bezier(0.4, 0, 0.2, 1)',
+  },
+  zIndex: {
+    0: '0',
+    10: '10',
+    20: '20',
+    30: '30',
+    40: '40',
+    50: '50',
+    auto: 'auto',
+  },
+} as const;
+
+export type Theme = typeof theme;
+export default theme;

@@ -1,0 +1,65 @@
+name: Performance Monitoring
+
+on:
+  schedule:
+    - cron: '0 */6 * * *'  # Run every 6 hours
+  workflow_dispatch:  # Allow manual trigger
+
+jobs:
+  lighthouse:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Setup Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '18.x'
+
+    - name: Install dependencies
+      run: |
+        cd frontend
+        npm ci
+        npm run build
+
+    - name: Run Lighthouse CI
+      uses: treosh/lighthouse-ci-action@v10
+      with:
+        urls: |
+          https://ouiblock.github.io/tonmaps/
+        uploadArtifacts: true
+        temporaryPublicStorage: true
+        configPath: '.github/lighthouse-config.json'
+
+    - name: Save Lighthouse results
+      uses: actions/upload-artifact@v3
+      with:
+        name: lighthouse-results
+        path: '.lighthouseci'
+
+  backend-performance:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.11'
+
+    - name: Install dependencies
+      run: |
+        cd backend
+        pip install -r requirements.txt
+        pip install locust
+
+    - name: Run Load Test
+      run: |
+        cd backend
+        locust --headless -f load_tests/locustfile.py --users 50 --spawn-rate 5 --run-time 1m --host http://localhost:8000
+
+    - name: Save Load Test Results
+      uses: actions/upload-artifact@v3
+      with:
+        name: load-test-results
+        path: backend/load_tests/results

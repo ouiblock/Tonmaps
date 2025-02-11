@@ -1,0 +1,234 @@
+#include "stdlib.fc";
+
+;; RideShare Contract for Onzroad
+
+;; Storage Variables
+global cell owner_address;
+global cell rewards_address;
+global cell rides;
+global cell user_ratings;
+global int ride_count;
+
+;; Constants
+const int MIN_TONS_FOR_STORAGE = 10000000; ;; 0.01 TON
+const int COMMISSION_PERCENT = 5;           ;; 5% commission
+
+;; Error Codes
+const int error::unauthorized = 101;
+const int error::ride_not_found = 102;
+const int error::invalid_state = 103;
+const int error::insufficient_payment = 104;
+
+;; Ride States
+const int STATE_PENDING = 0;
+const int STATE_ACCEPTED = 1;
+const int STATE_STARTED = 2;
+const int STATE_COMPLETED = 3;
+const int STATE_CANCELLED = 4;
+
+() load_data() impure {
+    var ds = get_data().begin_parse();
+    owner_address = ds~load_ref();
+    rewards_address = ds~load_ref();
+    rides = ds~load_ref();
+    user_ratings = ds~load_ref();
+    ride_count = ds~load_uint(64);
+    ds.end_parse();
+}
+
+() save_data() impure {
+    set_data(begin_cell()
+        .store_ref(owner_address)
+        .store_ref(rewards_address)
+        .store_ref(rides)
+        .store_ref(user_ratings)
+        .store_uint(ride_count, 64)
+        .end_cell());
+}
+
+;; Helper Functions
+
+cell pack_ride(slice driver, slice pickup_location, slice destination, int price, int state) {
+    return begin_cell()
+        .store_slice(driver)
+        .store_slice(pickup_location)
+        .store_slice(destination)
+        .store_coins(price)
+        .store_uint(state, 8)
+        .store_uint(now(), 64)
+        .end_cell();
+}
+
+;; Main Functions
+
+() create_ride(slice pickup_location, slice destination, int price) impure {
+    load_data();
+    throw_unless(error::insufficient_payment, msg_value() >= MIN_TONS_FOR_STORAGE);
+    
+    slice driver = sender_address();
+    cell ride = pack_ride(driver, pickup_location, destination, price, STATE_PENDING);
+    rides~udict_set_ref(64, ride_count, ride);
+    ride_count += 1;
+    save_data();
+}
+
+() accept_ride(int ride_id) impure {
+    load_data();
+    cell ride = rides.udict_get_ref(64, ride_id);
+    throw_if(error::ride_not_found, ride.null?());
+    
+    var rs = ride.begin_parse();
+    slice driver = rs~load_slice();
+    slice pickup_location = rs~load_slice();
+    slice destination = rs~load_slice();
+    int price = rs~load_coins();
+    int state = rs~load_uint(8);
+    
+    throw_unless(error::invalid_state, state == STATE_PENDING);
+    
+    slice passenger = sender_address();
+    ride = pack_ride(driver, pickup_location, destination, price, STATE_ACCEPTED)
+        .store_slice(passenger);
+    
+    rides~udict_set_ref(64, ride_id, ride);
+    save_data();
+}
+
+() start_ride(int ride_id) impure {
+    load_data();
+    cell ride = rides.udict_get_ref(64, ride_id);
+    throw_if(error::ride_not_found, ride.null?());
+    
+    var rs = ride.begin_parse();
+    slice driver = rs~load_slice();
+    throw_unless(error::unauthorized, equal_slices(sender_address(), driver));
+    
+    slice pickup_location = rs~load_slice();
+    slice destination = rs~load_slice();
+    int price = rs~load_coins();
+    int state = rs~load_uint(8);
+    throw_unless(error::invalid_state, state == STATE_ACCEPTED);
+    
+    ride = pack_ride(driver, pickup_location, destination, price, STATE_STARTED);
+    rides~udict_set_ref(64, ride_id, ride);
+    save_data();
+}
+
+() complete_ride(int ride_id) impure {
+    load_data();
+    cell ride = rides.udict_get_ref(64, ride_id);
+    throw_if(error::ride_not_found, ride.null?());
+    
+    var rs = ride.begin_parse();
+    slice driver = rs~load_slice();
+    throw_unless(error::unauthorized, equal_slices(sender_address(), driver));
+    
+    slice pickup_location = rs~load_slice();
+    slice destination = rs~load_slice();
+    int price = rs~load_coins();
+    int state = rs~load_uint(8);
+    throw_unless(error::invalid_state, state == STATE_STARTED);
+    
+    ;; Calculate commission
+    int commission = price * COMMISSION_PERCENT / 100;
+    int driver_payment = price - commission;
+    
+    ;; Send payment to driver
+    var msg = begin_cell()
+        .store_uint(0x18, 6)
+        .store_slice(driver)
+        .store_coins(driver_payment)
+        .store_uint(0, 1 + 4 + 4 + 64 + 32 + 1 + 1)
+        .end_cell();
+    send_raw_message(msg, 1);
+    
+    ;; Send commission to owner
+    msg = begin_cell()
+        .store_uint(0x18, 6)
+        .store_slice(owner_address.begin_parse())
+        .store_coins(commission)
+        .store_uint(0, 1 + 4 + 4 + 64 + 32 + 1 + 1)
+        .end_cell();
+    send_raw_message(msg, 1);
+    
+    ;; Award points through rewards contract
+    msg = begin_cell()
+        .store_uint(0x18, 6)
+        .store_slice(rewards_address.begin_parse())
+        .store_coins(0)
+        .store_uint(0, 1 + 4 + 4 + 64 + 32 + 1 + 1)
+        .store_uint(op::reward_ride(), 32)
+        .store_slice(driver)
+        .end_cell();
+    send_raw_message(msg, 64);
+    
+    ride = pack_ride(driver, pickup_location, destination, price, STATE_COMPLETED);
+    rides~udict_set_ref(64, ride_id, ride);
+    save_data();
+}
+
+() rate_ride(int ride_id, int rating, slice comment) impure {
+    load_data();
+    cell ride = rides.udict_get_ref(64, ride_id);
+    throw_if(error::ride_not_found, ride.null?());
+    
+    var rs = ride.begin_parse();
+    slice driver = rs~load_slice();
+    int state = rs~load_uint(8);
+    throw_unless(error::invalid_state, state == STATE_COMPLETED);
+    
+    slice rater = sender_address();
+    cell rating_data = begin_cell()
+        .store_slice(rater)
+        .store_uint(rating, 8)
+        .store_slice(comment)
+        .store_uint(now(), 64)
+        .end_cell();
+    
+    cell user_rating = user_ratings.udict_get_ref(256, driver);
+    if (user_rating.null?()) {
+        user_rating = new_dict();
+    }
+    user_rating~udict_set_ref(64, ride_id, rating_data);
+    user_ratings~udict_set_ref(256, driver, user_rating);
+    save_data();
+}
+
+;; Getters
+
+cell get_ride(int ride_id) method_id {
+    load_data();
+    return rides.udict_get_ref(64, ride_id);
+}
+
+int get_user_rating(slice address) method_id {
+    load_data();
+    cell user_rating = user_ratings.udict_get_ref(256, address);
+    if (user_rating.null?()) {
+        return 0;
+    }
+    
+    int total_rating = 0;
+    int count = 0;
+    
+    var (rating_id, rating_slice, f) = user_rating.udict_get_min?(64);
+    while (f) {
+        var rs = rating_slice.begin_parse();
+        rs~load_slice(); ;; rater
+        total_rating += rs~load_uint(8);
+        count += 1;
+        (rating_id, rating_slice, f) = user_rating.udict_get_next?(64, rating_id);
+    }
+    
+    return count > 0 ? total_rating / count : 0;
+}
+
+slice get_rewards_address() method_id {
+    load_data();
+    return rewards_address.begin_parse();
+}
+
+slice get_owner() method_id {
+    load_data();
+    return owner_address.begin_parse();
+}

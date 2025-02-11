@@ -1,0 +1,157 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --primary-color: #0088CC;
+  --secondary-color: #276EF1;
+  --background-light: #FFFFFF;
+  --background-dark: #212121;
+  --text-primary-light: #000000;
+  --text-secondary-light: #545454;
+  --text-primary-dark: #FFFFFF;
+  --text-secondary-dark: #A0A0A0;
+  --success-color: #38D39F;
+  --warning-color: #FFB800;
+  --error-color: #FF3B30;
+}
+
+@layer base {
+  body {
+    @apply bg-[#F7F7F7] dark:bg-[#212121] text-black dark:text-white;
+    font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  }
+
+  /* Telegram-style buttons */
+  .btn-telegram {
+    @apply rounded-lg px-4 py-2 font-medium transition-all duration-200 
+           bg-[#0088CC] hover:bg-[#0088CC]/90 text-white;
+  }
+
+  /* Uber-style cards */
+  .card-uber {
+    @apply bg-white dark:bg-[#2D2D2D] rounded-lg shadow-sm hover:shadow-md 
+           transition-shadow duration-200 p-4;
+  }
+
+  /* Uber-style inputs */
+  .input-uber {
+    @apply w-full px-4 py-3 rounded-lg border border-gray-200 dark:border-gray-700 
+           bg-white dark:bg-[#2D2D2D] focus:ring-2 focus:ring-[#276EF1] 
+           focus:border-transparent outline-none transition-all duration-200;
+  }
+
+  /* Telegram-style chat bubbles */
+  .chat-bubble {
+    @apply rounded-2xl p-3 max-w-[80%] relative;
+  }
+
+  .chat-bubble-sent {
+    @apply bg-[#0088CC] text-white ml-auto;
+  }
+
+  .chat-bubble-received {
+    @apply bg-white dark:bg-[#2D2D2D] mr-auto;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-gray-300 dark:bg-gray-700 rounded-full;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-gray-400 dark:bg-gray-600;
+}
+
+/* Animations */
+@keyframes slideUp {
+  from {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.slide-up {
+  animation: slideUp 0.3s ease-out;
+}
+
+/* DatePicker Dark Mode Styles */
+.dark .react-datepicker {
+  background-color: #1a1a1a;
+  border-color: #374151;
+}
+
+.dark .react-datepicker__header {
+  background-color: #2d2d2d;
+  border-bottom-color: #374151;
+}
+
+.dark .react-datepicker__current-month,
+.dark .react-datepicker__day-name,
+.dark .react-datepicker__time-name {
+  color: #fff;
+}
+
+.dark .react-datepicker__day,
+.dark .react-datepicker__time-list-item {
+  color: #d1d5db;
+}
+
+.dark .react-datepicker__day:hover,
+.dark .react-datepicker__time-list-item:hover {
+  background-color: #374151;
+}
+
+.dark .react-datepicker__day--selected,
+.dark .react-datepicker__time-list-item--selected {
+  background-color: #0088CC !important;
+  color: white !important;
+}
+
+.dark .react-datepicker__time-container,
+.dark .react-datepicker__time-list {
+  background-color: #1a1a1a;
+  border-color: #374151;
+}
+
+.dark .react-datepicker__time-list-item--disabled {
+  color: #6b7280;
+}
+
+.react-datepicker-wrapper {
+  width: 100%;
+}
+
+.react-datepicker__time-list-item--disabled {
+  color: #ccc !important;
+}
+
+.react-datepicker__day--disabled {
+  color: #ccc !important;
+}
+
+.react-datepicker__time-container {
+  width: 120px;
+}
+
+.react-datepicker__time-container .react-datepicker__time .react-datepicker__time-box {
+  width: 120px;
+}
+
+.react-datepicker-popper {
+  z-index: 20;
+}

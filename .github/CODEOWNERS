@@ -1,0 +1,29 @@
+# These owners will be the default owners for everything in
+# the repo. Unless a later match takes precedence,
+# @ouiblock will be requested for review when someone 
+# opens a pull request.
+*       @ouiblock
+
+# Frontend specific files
+/frontend/   @ouiblock
+/frontend/src/components/   @ouiblock
+/frontend/src/contexts/    @ouiblock
+/frontend/src/pages/       @ouiblock
+
+# Backend specific files
+/backend/    @ouiblock
+/backend/src/routes/    @ouiblock
+/backend/src/models/    @ouiblock
+
+# Documentation
+/docs/      @ouiblock
+*.md        @ouiblock
+
+# Configuration files
+*.json      @ouiblock
+*.yml       @ouiblock
+*.yaml      @ouiblock
+
+# Security-sensitive files
+/backend/src/utils/auth.py     @ouiblock
+/frontend/src/utils/wallet.ts  @ouiblock

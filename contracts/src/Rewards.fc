@@ -1,0 +1,156 @@
+#include "stdlib.fc";
+
+;; Rewards Contract for Onzroad
+
+;; Storage Variables
+global cell owner_address;
+global cell token_address;
+global cell user_scores;
+global cell daily_rewards;
+global int last_update;
+
+;; Constants
+const int DAILY_REWARD_LIMIT = 100;  ;; Maximum points per day
+const int RIDE_REWARD = 10;          ;; Points for completing a ride
+const int DELIVERY_REWARD = 15;      ;; Points for completing a delivery
+const int REPORT_REWARD = 5;         ;; Points for reporting road conditions
+const int DAY_SECONDS = 86400;       ;; Seconds in a day
+
+;; Error Codes
+const int error::unauthorized = 101;
+const int error::daily_limit_reached = 102;
+const int error::invalid_amount = 103;
+
+() load_data() impure {
+    var ds = get_data().begin_parse();
+    owner_address = ds~load_ref();
+    token_address = ds~load_ref();
+    user_scores = ds~load_ref();
+    daily_rewards = ds~load_ref();
+    last_update = ds~load_uint(64);
+    ds.end_parse();
+}
+
+() save_data() impure {
+    set_data(begin_cell()
+        .store_ref(owner_address)
+        .store_ref(token_address)
+        .store_ref(user_scores)
+        .store_ref(daily_rewards)
+        .store_uint(last_update, 64)
+        .end_cell());
+}
+
+;; Helper Functions
+
+() reset_daily_rewards() impure {
+    int current_time = now();
+    if (current_time - last_update >= DAY_SECONDS) {
+        daily_rewards = new_dict();
+        last_update = current_time;
+    }
+}
+
+int get_daily_rewards(slice address) impure {
+    reset_daily_rewards();
+    (int rewards, _) = daily_rewards.udict_get?(256, address);
+    return rewards;
+}
+
+() update_daily_rewards(slice address, int points) impure {
+    (int current_rewards, _) = daily_rewards.udict_get?(256, address);
+    daily_rewards~udict_set(256, address, current_rewards + points);
+}
+
+() update_user_score(slice address, int points) impure {
+    (int current_score, _) = user_scores.udict_get?(256, address);
+    user_scores~udict_set(256, address, current_score + points);
+}
+
+;; Reward Functions
+
+() reward_ride(slice user_address) impure {
+    reset_daily_rewards();
+    int daily_reward = get_daily_rewards(user_address);
+    throw_unless(error::daily_limit_reached, daily_reward + RIDE_REWARD <= DAILY_REWARD_LIMIT);
+    
+    update_daily_rewards(user_address, RIDE_REWARD);
+    update_user_score(user_address, RIDE_REWARD);
+    save_data();
+}
+
+() reward_delivery(slice user_address) impure {
+    reset_daily_rewards();
+    int daily_reward = get_daily_rewards(user_address);
+    throw_unless(error::daily_limit_reached, daily_reward + DELIVERY_REWARD <= DAILY_REWARD_LIMIT);
+    
+    update_daily_rewards(user_address, DELIVERY_REWARD);
+    update_user_score(user_address, DELIVERY_REWARD);
+    save_data();
+}
+
+() reward_report(slice user_address) impure {
+    reset_daily_rewards();
+    int daily_reward = get_daily_rewards(user_address);
+    throw_unless(error::daily_limit_reached, daily_reward + REPORT_REWARD <= DAILY_REWARD_LIMIT);
+    
+    update_daily_rewards(user_address, REPORT_REWARD);
+    update_user_score(user_address, REPORT_REWARD);
+    save_data();
+}
+
+;; Admin Functions
+
+() set_token_address(slice new_token_address) impure {
+    load_data();
+    throw_unless(error::unauthorized, equal_slices(sender_address(), owner_address.begin_parse()));
+    token_address = begin_cell().store_slice(new_token_address).end_cell();
+    save_data();
+}
+
+;; Convert points to tokens (can only be called by owner)
+() convert_points_to_tokens(slice user_address, int points) impure {
+    load_data();
+    throw_unless(error::unauthorized, equal_slices(sender_address(), owner_address.begin_parse()));
+    
+    (int current_score, _) = user_scores.udict_get?(256, user_address);
+    throw_unless(error::invalid_amount, current_score >= points);
+    
+    user_scores~udict_set(256, user_address, current_score - points);
+    
+    ;; Call token contract to mint tokens
+    var msg = begin_cell()
+        .store_uint(0x18, 6)
+        .store_slice(token_address.begin_parse())
+        .store_coins(0)
+        .store_uint(0, 1 + 4 + 4 + 64 + 32 + 1 + 1)
+        .store_uint(op::mint(), 32)
+        .store_slice(user_address)
+        .store_uint(points, 256)
+        .end_cell();
+    send_raw_message(msg, 64);
+    
+    save_data();
+}
+
+;; Getters
+
+int get_user_score(slice address) method_id {
+    load_data();
+    (int score, _) = user_scores.udict_get?(256, address);
+    return score;
+}
+
+int get_daily_reward_limit() method_id {
+    return DAILY_REWARD_LIMIT;
+}
+
+slice get_token_address() method_id {
+    load_data();
+    return token_address.begin_parse();
+}
+
+slice get_owner() method_id {
+    load_data();
+    return owner_address.begin_parse();
+}
