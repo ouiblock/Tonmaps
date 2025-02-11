@@ -54,7 +54,7 @@ export function WalletProvider({ children }: { children: ReactNode }) {
       const initConnector = async () => {
         try {
           const newConnector = new TonConnect({
-            manifestUrl: 'https://tonmaps.com/tonconnect-manifest.json',
+            manifestUrl: 'https://onzrod.com/tonconnect-manifest.json',
           });
           setConnector(newConnector);
 

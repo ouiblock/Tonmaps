@@ -1,6 +1,6 @@
-# Contributing to TonMaps
+# Contributing to Onzrod
 
-First off, thank you for considering contributing to TonMaps! It's people like you that make TonMaps such a great tool.
+First off, thank you for considering contributing to Onzrod! It's people like you that make Onzrod such a great tool.
 
 ## Code of Conduct
 
@@ -42,8 +42,8 @@ Enhancement suggestions are tracked as GitHub issues. When creating an enhanceme
 
 1. Clone the repository
    ```bash
-   git clone https://github.com/ouiblock/Tonmaps.git
-   cd tonmaps
+   git clone https://github.com/ouiblock/Onzrod.git
+   cd onzrod
    ```
 
 2. Install dependencies
@@ -123,7 +123,7 @@ Contributors who make significant and valuable contributions will be granted com
 If you need help with your contribution, you can:
 
 1. Join our [Telegram group](https://t.me/Oxmasteronchain)
-2. Create an issue in the [GitHub repository](https://github.com/ouiblock/tonmaps)
+2. Create an issue in the [GitHub repository](https://github.com/ouiblock/Onzrod)
 3. Contact the maintainer directly: [@Oxmasteronchain](https://t.me/Oxmasteronchain)
 
 ## Project Maintainers
