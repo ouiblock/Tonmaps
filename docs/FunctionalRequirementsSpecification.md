@@ -1,8 +1,8 @@
 # Functional Requirements Specification (FRS)
-## Onzroad - Web3 Mobility and Delivery Platform
+## Onzrod - Web3 Mobility and Delivery Platform
 
 ### 1. Project Overview
-Onzroad is a decentralized platform that combines ride-sharing, food delivery, and package delivery services using Web3 technology. The platform serves three main user types: regular users, delivery drivers, and restaurants.
+Onzrod is a decentralized platform that combines ride-sharing, food delivery, and package delivery services using Web3 technology. The platform serves three main user types: regular users, delivery drivers, and restaurants.
 
 ### 2. User Types and Core Features
 

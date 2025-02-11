@@ -31,7 +31,7 @@
 
 ### 2.1 Smart Contracts
 ```func
-contract Onzroad {
+contract Onzrod {
     // Core mappings
     mapping(address => UserProfile) users;
     mapping(uint256 => Ride) rides;

@@ -1,5 +1,5 @@
 # Technical Requirements Specification (TRS)
-## Onzroad - Web3 Mobility and Delivery Platform
+## Onzrod - Web3 Mobility and Delivery Platform
 
 ### 1. Technology Stack
 

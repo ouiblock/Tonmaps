@@ -1,6 +1,6 @@
 #include "stdlib.fc";
 
-;; RideShare Contract for Onzroad
+;; RideShare Contract for Onzrod
 
 ;; Storage Variables
 global cell owner_address;

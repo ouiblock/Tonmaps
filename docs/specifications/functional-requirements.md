@@ -3,7 +3,7 @@
 ## 1. Introduction
 
 ### 1.1 Purpose
-Onzroad is a decentralized platform that combines ride-sharing and delivery services with blockchain technology, specifically built on the TON blockchain.
+Onzrod is a decentralized platform that combines ride-sharing and delivery services with blockchain technology, specifically built on the TON blockchain.
 
 ### 1.2 Project Scope
 The platform aims to create a comprehensive ecosystem that connects drivers, passengers, and delivery services while incentivizing participation through OZR tokens.

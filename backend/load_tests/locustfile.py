@@ -1,6 +1,6 @@
 from locust import HttpUser, task, between
 
-class OnzroadUser(HttpUser):
+class OnzrodUser(HttpUser):
     wait_time = between(1, 5)  # Wait between 1-5 seconds between tasks
 
     def on_start(self):
