@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
 import TelegramLogo from '../icons/TelegramLogo';
+import { ShoppingBagIcon, CalendarIcon } from '../icons';
 
 interface MainLayoutProps {
   children: React.ReactNode;
@@ -66,6 +67,28 @@ export default function MainLayout({ children }: MainLayoutProps) {
                 <span className="font-medium">{item.label}</span>
               </Link>
             ))}
+            <Link
+              href="/marketplace"
+              className={`flex items-center space-x-2 p-2 rounded-lg ${
+                router.pathname === '/marketplace'
+                  ? 'bg-blue-100 text-blue-600'
+                  : 'text-gray-600 hover:bg-gray-100'
+              }`}
+            >
+              <ShoppingBagIcon className="w-6 h-6" />
+              <span>Marketplace</span>
+            </Link>
+            <Link
+              href="/marketplace/reservations"
+              className={`flex items-center space-x-2 p-2 rounded-lg ${
+                router.pathname === '/marketplace/reservations'
+                  ? 'bg-blue-100 text-blue-600'
+                  : 'text-gray-600 hover:bg-gray-100'
+              }`}
+            >
+              <CalendarIcon className="w-6 h-6" />
+              <span>My Reservations</span>
+            </Link>
           </nav>
         </div>
       </div>
