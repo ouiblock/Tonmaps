@@ -26,7 +26,7 @@ export default function LoginModal({ isOpen, onClose }: LoginModalProps) {
   return (
     <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
       <div className="bg-telegram-light rounded-2xl p-8 max-w-md w-full mx-4">
-        <h2 className="text-2xl font-bold mb-6 text-center">Connect to Onzroad</h2>
+        <h2 className="text-2xl font-bold mb-6 text-center">Connect to Onzrod</h2>
         
         {error && (
           <div className="bg-red-500/10 border border-red-500 text-red-500 rounded-lg p-3 mb-4">

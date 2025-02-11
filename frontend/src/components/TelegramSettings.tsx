@@ -172,7 +172,7 @@ export default function TelegramSettings() {
           <li className="flex items-start space-x-2">
             <span className="text-[#2AABEE]">•</span>
             <span>
-              You can revoke access to Onzroad at any time through Telegram settings
+              You can revoke access to Onzrod at any time through Telegram settings
             </span>
           </li>
         </ul>

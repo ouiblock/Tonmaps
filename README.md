@@ -1,39 +1,39 @@
-# Onzroad
+# Onzrod
 
 ## Status
-[![CI](https://github.com/ouiblock/Onzroad/actions/workflows/ci.yml/badge.svg)](https://github.com/ouiblock/Onzroad/actions/workflows/ci.yml)
-[![Performance](https://github.com/ouiblock/Onzroad/actions/workflows/performance.yml/badge.svg)](https://github.com/ouiblock/Onzroad/actions/workflows/performance.yml)
+[![CI](https://github.com/ouiblock/Onzrod/actions/workflows/ci.yml/badge.svg)](https://github.com/ouiblock/Onzrod/actions/workflows/ci.yml)
+[![Performance](https://github.com/ouiblock/Onzrod/actions/workflows/performance.yml/badge.svg)](https://github.com/ouiblock/Onzrod/actions/workflows/performance.yml)
 [![Uptime](https://img.shields.io/uptimerobot/ratio/7/m793642934-ec67b4d9cbe943f94b3c34d9)](https://stats.uptimerobot.com/dashboard)
 [![Response Time](https://img.shields.io/uptimerobot/status/m793642934-ec67b4d9cbe943f94b3c34d9)](https://stats.uptimerobot.com/dashboard)
 
 ## Quality & Security
-[![Codecov](https://codecov.io/gh/ouiblock/Onzroad/branch/main/graph/badge.svg)](https://codecov.io/gh/ouiblock/Onzroad)
-[![Maintainability](https://api.codeclimate.com/v1/badges/your-repo-id/maintainability)](https://codeclimate.com/github/ouiblock/Onzroad)
-[![Test Coverage](https://api.codeclimate.com/v1/badges/your-repo-id/test_coverage)](https://codeclimate.com/github/ouiblock/Onzroad)
-[![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=ouiblock_Onzroad&metric=security_rating)](https://sonarcloud.io/summary/new_code?id=ouiblock_Onzroad)
-[![Known Vulnerabilities](https://snyk.io/test/github/ouiblock/Onzroad/badge.svg)](https://snyk.io/test/github/ouiblock/Onzroad)
+[![Codecov](https://codecov.io/gh/ouiblock/Onzrod/branch/main/graph/badge.svg)](https://codecov.io/gh/ouiblock/Onzrod)
+[![Maintainability](https://api.codeclimate.com/v1/badges/your-repo-id/maintainability)](https://codeclimate.com/github/ouiblock/Onzrod)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/your-repo-id/test_coverage)](https://codeclimate.com/github/ouiblock/Onzrod)
+[![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=ouiblock_Onzrod&metric=security_rating)](https://sonarcloud.io/summary/new_code?id=ouiblock_Onzrod)
+[![Known Vulnerabilities](https://snyk.io/test/github/ouiblock/Onzrod/badge.svg)](https://snyk.io/test/github/ouiblock/Onzrod)
 
 ## Project Info
-[![GitHub license](https://img.shields.io/github/license/ouiblock/Onzroad)](https://github.com/ouiblock/Onzroad/blob/main/LICENSE)
-[![GitHub issues](https://img.shields.io/github/issues/ouiblock/Onzroad)](https://github.com/ouiblock/Onzroad/issues)
-[![GitHub stars](https://img.shields.io/github/stars/ouiblock/Onzroad)](https://github.com/ouiblock/Onzroad/stargazers)
-[![GitHub forks](https://img.shields.io/github/forks/ouiblock/Onzroad)](https://github.com/ouiblock/Onzroad/network)
-[![GitHub pull requests](https://img.shields.io/github/issues-pr/ouiblock/Onzroad)](https://github.com/ouiblock/Onzroad/pulls)
-[![Last Commit](https://img.shields.io/github/last-commit/ouiblock/Onzroad)](https://github.com/ouiblock/Onzroad/commits/main)
+[![GitHub license](https://img.shields.io/github/license/ouiblock/Onzrod)](https://github.com/ouiblock/Onzrod/blob/main/LICENSE)
+[![GitHub issues](https://img.shields.io/github/issues/ouiblock/Onzrod)](https://github.com/ouiblock/Onzrod/issues)
+[![GitHub stars](https://img.shields.io/github/stars/ouiblock/Onzrod)](https://github.com/ouiblock/Onzrod/stargazers)
+[![GitHub forks](https://img.shields.io/github/forks/ouiblock/Onzrod)](https://github.com/ouiblock/Onzrod/network)
+[![GitHub pull requests](https://img.shields.io/github/issues-pr/ouiblock/Onzrod)](https://github.com/ouiblock/Onzrod/pulls)
+[![Last Commit](https://img.shields.io/github/last-commit/ouiblock/Onzrod)](https://github.com/ouiblock/Onzrod/commits/main)
 
 ## Dependencies
-[![Frontend Dependencies](https://img.shields.io/librariesio/github/ouiblock/Onzroad?path=frontend)](https://libraries.io/github/ouiblock/Onzroad)
-[![Backend Dependencies](https://img.shields.io/librariesio/github/ouiblock/Onzroad?path=backend)](https://libraries.io/github/ouiblock/Onzroad)
-[![Known Vulnerabilities](https://snyk.io/test/github/ouiblock/Onzroad/badge.svg)](https://snyk.io/test/github/ouiblock/Onzroad)
+[![Frontend Dependencies](https://img.shields.io/librariesio/github/ouiblock/Onzrod?path=frontend)](https://libraries.io/github/ouiblock/Onzrod)
+[![Backend Dependencies](https://img.shields.io/librariesio/github/ouiblock/Onzrod?path=backend)](https://libraries.io/github/ouiblock/Onzrod)
+[![Known Vulnerabilities](https://snyk.io/test/github/ouiblock/Onzrod/badge.svg)](https://snyk.io/test/github/ouiblock/Onzrod)
 
 ## Documentation & Community
-[![Documentation](https://img.shields.io/badge/docs-GitHub%20Pages-blue)](https://ouiblock.github.io/Onzroad/)
+[![Documentation](https://img.shields.io/badge/docs-GitHub%20Pages-blue)](https://ouiblock.github.io/Onzrod/)
 [![TON](https://img.shields.io/badge/TON-Blockchain-blue)](https://ton.org)
 [![Telegram](https://img.shields.io/badge/Telegram-blue?logo=telegram)](https://t.me/Oxmasteronchain)
 
 A decentralized ride-sharing and delivery application built on TON Blockchain.
 
-![Onzroad Logo](public/Onzroad-logo.png)
+![Onzrod Logo](public/Onzrod-logo.png)
 
 ## Features
 
@@ -67,8 +67,8 @@ A decentralized ride-sharing and delivery application built on TON Blockchain.
 
 1. Clone the repository
    ```bash
-   git clone https://github.com/yourusername/Onzroad.git
-   cd Onzroad
+   git clone https://github.com/yourusername/Onzrod.git
+   cd Onzrod
    ```
 
 2. Install dependencies
@@ -246,7 +246,7 @@ Distributed under the MIT License. See `LICENSE` for more information.
 Oxmasteronchain - [@Oxmasteronchain](https://t.me/Oxmasteronchain)
 
 Project Links:
-- GitHub: [https://github.com/ouiblock/Onzroad](https://github.com/ouiblock/Onzroad)
+- GitHub: [https://github.com/ouiblock/Onzrod](https://github.com/ouiblock/Onzrod)
 - Personal GitHub: [https://github.com/Oxmasteronchain](https://github.com/Oxmasteronchain)
 
 ## Acknowledgments

@@ -1,15 +1,15 @@
 {
-  "url": "https://onzroad.com",
-  "name": "Onzroad",
-  "iconUrl": "https://onzroad.com/logo.png",
-  "termsOfUseUrl": "https://onzroad.com/terms",
-  "privacyPolicyUrl": "https://onzroad.com/privacy",
+  "url": "https://onzrod.com",
+  "name": "Onzrod",
+  "iconUrl": "https://onzrod.com/logo.png",
+  "termsOfUseUrl": "https://onzrod.com/terms",
+  "privacyPolicyUrl": "https://onzrod.com/privacy",
   "manifestVersion": "0.1",
   "items": [
     {
-      "name": "Onzroad Web App",
-      "url": "https://onzroad.com",
-      "iconUrl": "https://onzroad.com/logo.png",
+      "name": "Onzrod Web App",
+      "url": "https://onzrod.com",
+      "iconUrl": "https://onzrod.com/logo.png",
       "platforms": ["web"]
     }
   ]

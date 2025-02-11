@@ -1,7 +1,7 @@
 class TelegramService {
   private static instance: TelegramService;
   private baseUrl: string = '/api/telegram';
-  private botUsername: string = 'OnzroadBot';
+  private botUsername: string = 'OnzrodBot';
 
   private constructor() {
     this.initializeTelegramWidget();

@@ -84,7 +84,7 @@ const QUICK_REPLIES = [
   },
   {
     id: 'thanks',
-    message: 'Thank you for using Onzroad!',
+    message: 'Thank you for using Onzrod!',
     icon: '🙏',
   },
 ];

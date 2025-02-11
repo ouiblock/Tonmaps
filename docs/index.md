@@ -1,6 +1,6 @@
-# Onzroad Documentation
+# Onzrod Documentation
 
-Welcome to the Onzroad documentation. This guide will help you understand and use our decentralized ride-sharing and delivery platform.
+Welcome to the Onzrod documentation. This guide will help you understand and use our decentralized ride-sharing and delivery platform.
 
 ## Quick Start
 
@@ -33,13 +33,13 @@ Welcome to the Onzroad documentation. This guide will help you understand and us
 ### Wallet Integration
 ```javascript
 // Example wallet connection
-const wallet = await Onzroad.connectWallet();
+const wallet = await Onzrod.connectWallet();
 ```
 
 ### Maps Integration
 ```javascript
 // Example route calculation
-const route = await Onzroad.calculateRoute(origin, destination);
+const route = await Onzrod.calculateRoute(origin, destination);
 ```
 
 ## Smart Contracts
@@ -59,14 +59,14 @@ We welcome contributions! Please see our [Contributing Guide](CONTRIBUTING.md) f
 ## Community & Support
 
 ### Official Links
-- GitHub Repository: [ouiblock/onzroad](https://github.com/ouiblock/onzroad)
-- Documentation: [Onzroad Docs](https://ouiblock.github.io/onzroad/)
+- GitHub Repository: [ouiblock/onzrod](https://github.com/ouiblock/onzrod)
+- Documentation: [Onzrod Docs](https://ouiblock.github.io/onzrod/)
 - Personal GitHub: [Oxmasteronchain](https://github.com/Oxmasteronchain)
 
 ### Get in Touch
 - Telegram: [@Oxmasteronchain](https://t.me/Oxmasteronchain)
-- GitHub Issues: [Report a Bug](https://github.com/ouiblock/onzroad/issues)
-- GitHub Discussions: [Join the Discussion](https://github.com/ouiblock/onzroad/discussions)
+- GitHub Issues: [Report a Bug](https://github.com/ouiblock/onzrod/issues)
+- GitHub Discussions: [Join the Discussion](https://github.com/ouiblock/onzrod/discussions)
 
 ### For Developers
 - API Documentation

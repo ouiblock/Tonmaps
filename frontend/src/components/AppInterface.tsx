@@ -292,7 +292,7 @@ const AppInterface = () => {
             <div className="space-y-4">
               <div className="flex items-center justify-between">
                 <h2 className="text-2xl font-bold bg-gradient-to-r from-[#2AABEE] to-[#229ED9] text-transparent bg-clip-text">
-                  Onzroad
+                  Onzrod
                 </h2>
                 {address && (
                   <div className="flex items-center space-x-2 text-sm text-gray-400">
