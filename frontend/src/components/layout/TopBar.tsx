@@ -26,7 +26,7 @@ export default function TopBar({ onMenuClick }: TopBarProps) {
           <div className="flex items-center space-x-2">
             <div className="w-8 h-8 bg-[#007AFF] rounded-lg"></div>
             <span className="text-lg font-accent font-bold text-[#1E1E1E] dark:text-white">
-              TonMaps
+              Onzrod
             </span>
           </div>
         </div>

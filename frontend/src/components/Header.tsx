@@ -29,7 +29,7 @@ const Header = () => {
   return (
     <header className="w-full bg-blue-500 text-white p-4">
       <div className="flex justify-between items-center">
-        <h1 className="text-xl font-bold">TONmaps</h1>
+        <h1 className="text-xl font-bold">Onzrod</h1>
         <div className="text-sm">
           {isLoading ? (
             'Getting location...'

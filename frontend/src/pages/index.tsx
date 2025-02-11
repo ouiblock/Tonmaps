@@ -40,7 +40,7 @@ export default function Home() {
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <div className="text-center">
           <h1 className="text-4xl font-bold text-[#1E1E1E] dark:text-white">
-            Welcome to TonMaps
+            Welcome to Onzrod
           </h1>
           <p className="mt-4 text-xl text-[#717171] dark:text-[#B3B3B3]">
             The decentralized mobility and delivery platform

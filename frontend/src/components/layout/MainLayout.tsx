@@ -40,7 +40,7 @@ export default function MainLayout({ children }: MainLayoutProps) {
           <div className="flex items-center justify-between mb-8">
             <div className="flex items-center space-x-2">
               <TelegramLogo className="w-8 h-8 text-[#0088CC]" />
-              <span className="text-xl font-bold text-[#0088CC]">TonMaps</span>
+              <span className="text-xl font-bold text-[#0088CC]">Onzrod</span>
             </div>
             <button
               onClick={() => setIsSidebarOpen(false)}
@@ -97,7 +97,7 @@ export default function MainLayout({ children }: MainLayoutProps) {
                 </button>
                 <div className="ml-4 flex items-center space-x-2">
                   <TelegramLogo className="w-8 h-8 text-[#0088CC]" />
-                  <span className="text-xl font-bold text-[#0088CC]">TonMaps</span>
+                  <span className="text-xl font-bold text-[#0088CC]">Onzrod</span>
                 </div>
               </div>
 

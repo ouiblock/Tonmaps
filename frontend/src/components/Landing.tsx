@@ -17,14 +17,14 @@ const Landing = () => {
         <div className="flex flex-col items-center justify-center space-y-8">
           <Image
             src="/logo.svg"
-            alt="TONmaps Logo"
+            alt="Onzrod Logo"
             width={200}
             height={200}
             className="mb-8"
           />
           
           <h1 className="text-5xl md:text-7xl font-bold text-center bg-gradient-to-r from-[#2AABEE] to-blue-600 text-transparent bg-clip-text">
-            TONmaps
+            Onzrod
           </h1>
           
           <p className="text-xl md:text-2xl text-center text-gray-400 max-w-2xl">
@@ -40,7 +40,7 @@ const Landing = () => {
               Launch App
             </button>
             <a
-              href="https://t.me/TON_MapsChat"
+              href="https://t.me/OnzrodChat"
               target="_blank"
               rel="noopener noreferrer"
               className="px-8 py-4 rounded-xl bg-white/10 text-white font-semibold hover:bg-white/20 transition-colors text-lg text-center"

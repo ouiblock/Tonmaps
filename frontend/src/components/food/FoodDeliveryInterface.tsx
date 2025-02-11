@@ -219,7 +219,7 @@ export const FoodDeliveryInterface = ({ mode }: Props) => {
               className="text-current"
             />
           </button>
-          <h1 className="text-white font-semibold">TONmaps Food Delivery</h1>
+          <h1 className="text-white font-semibold">Onzrod Food Delivery</h1>
           <div className="flex items-center space-x-4">
             {user ? (
               <div className="flex items-center space-x-2">
