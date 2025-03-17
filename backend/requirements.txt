@@ -1,6 +1,6 @@
 fastapi==0.100.0
 uvicorn==0.23.0
-python-telegram-bot==20.4
+python-telegram-bot==22.0
 tonsdk==1.0.15
 sqlalchemy==2.0.20
 alembic==1.11.3
